@@ -1,5 +1,8 @@
 # Prismic + SvelteKit Minimal Starter
 
+https://www.youtube.com/watch?v=v5Ncz5AcXjI
+2:07:00
+
 Want to quickly get started building your own project with [Prismic][prismic] and [SvelteKit][sveltekit]? This project includes basic configurations and nothing else. The project includes one Rich Text Slice, a homepage, and a dynamic page.
 
 - **Demo**: [Open live demo][live-demo]
