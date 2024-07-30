@@ -1,11 +1,31 @@
 <script>
 	import { PrismicImage, PrismicText, SliceZone } from '@prismicio/svelte';
-
+	import { onMount } from 'svelte';
+	import gsap from 'gsap';
 	import { components } from '$lib/slices';
 	import Bounded from '$lib/components/Bounded.svelte';
 	import TriangleGrid from '$lib/components/TriangleGrid.svelte';
 
 	export let data;
+
+	onMount(() => {
+		const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce').matches;
+
+		if (prefersReducedMotion) {
+			gsap.set('.case-study__image', { opacity: 1 });
+
+			return;
+		}
+
+		gsap.fromTo(
+			'.case-study__image',
+			{
+				opacity: 0,
+				y: 100
+			},
+			{ opacity: 1, y: 0, duration: 1, delay: 0.5, ease: 'power2.inOut' }
+		);
+	});
 </script>
 
 <Bounded>
@@ -20,7 +40,10 @@
 			<PrismicText field={data.page.data.description} />
 		</p>
 
-		<PrismicImage field={data.page.data.image} class="logo-image rounded-lg" />
+		<PrismicImage
+			field={data.page.data.image}
+			class="case-study__image logo-image rounded-lg opacity-0"
+		/>
 	</div>
 
 	<div class="mx-auto mt-12 md:mt-16">
